@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,7 +53,40 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(
+    setup =>
+    {
+       setup.SwaggerDoc("v1", new OpenApiInfo { Title = "Pet API", Version = "v1", });
+       setup.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            Description = "Input your Bearer token in this format - Bearer {your token key} to access this API"
+        });
+        setup.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                 new OpenApiSecurityScheme
+                 {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    },
+                    Scheme = "Bearer",
+                    Name = "Bearer",
+                    In = ParameterLocation.Header
+
+                 },
+                 new string[] {}
+            }
+
+        });
+    }
+);
 
 var app = builder.Build();
 
