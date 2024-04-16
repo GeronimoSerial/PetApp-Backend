@@ -1,0 +1,6 @@
+@TalentosDB_HostAddress = http://localhost:5058
+
+GET {{TalentosDB_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
