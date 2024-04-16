@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using DataAccessLayer;
 using DataAccessLayer.DatabaseContext;
 using DataAccessLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace PresentationLayer.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
