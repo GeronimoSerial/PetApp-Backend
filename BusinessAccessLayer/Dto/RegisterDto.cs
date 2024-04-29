@@ -14,7 +14,7 @@ namespace BusinessAccessLayer.Dto
         [Required]
         public string LastName { get; set; }
         [Required]
-        public DateTime? Birth { get; set; }
+        public DateTime? Birthday { get; set; }
         //public string ConfirmPassword { get; set; }
     }
 }

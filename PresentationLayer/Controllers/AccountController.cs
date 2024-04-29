@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -77,7 +77,7 @@ namespace PresentationLayer.Controllers
                 Name = user.Name,
                 LastName = user.LastName,
                 Email = user.Username,
-                Birth = user.Birth
+                Birthday = user.Birthday
 
             };
 
@@ -95,7 +95,7 @@ namespace PresentationLayer.Controllers
 
             var userDto = new UserDto()
             {
-                Username = user.Username,
+                Username = newUser.UserName,
                 Token = token
 
             };

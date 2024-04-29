@@ -13,7 +13,7 @@ namespace DataAccessLayer.Entities{
         //[EmailAddress]
         //public string Email { get; set; }
         //public string Password { get; set; }
-        public DateTime? Birth { get; set; }
+        public DateTime? Birthday { get; set; }
         public string? Description {get; set;}
 
         public List<Pet> Pets {get; set;}

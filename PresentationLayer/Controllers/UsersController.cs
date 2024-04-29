@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PresentationLayer.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -24,11 +23,19 @@ namespace PresentationLayer.Controllers
         [HttpPost("PostUser")]
         public async Task<ActionResult> PostUser(User user)
         {
-             _db.Users.Add(user);
-             _db.SaveChanges();
-            return Ok();
-        //     await _db.SaveChangesAsync();
-        //     return Ok(await _db.Users.ToListAsync());
+            try
+            {
+                _db.Users.Add(user);
+                await _db.SaveChangesAsync();
+                return Ok();
+                //     await _db.SaveChangesAsync();
+                //     return Ok(await _db.Users.ToListAsync());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
 
@@ -39,7 +46,43 @@ namespace PresentationLayer.Controllers
 
             return Ok(user);
         
-            // return await _db.Users.ToListAsync();
+            
         }
-    }
+
+        //Method to delete a user from Database
+        [Authorize]
+        [HttpDelete("DeleteUser/{userId}")]
+        public async Task<ActionResult> DeleteUser(int userId)
+        {
+            try
+            {
+                var user = await _db.Users.FirstOrDefaultAsync(x => x.Id == userId);
+                if (user!= null)
+                {
+                    _db.Users.Remove(user);
+                    await _db.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }      
+
+        }
+    }  
 }
+
+    //      //Obtener todos los usuarios
+    //     [Authorize]
+    //     [HttpGet("GetAllUsers")]
+    //     public async Task<ActionResult<List<User>>> GetUsers()
+    //     {
+    //         return await _db.Users.ToListAsync();
+    //     }
+

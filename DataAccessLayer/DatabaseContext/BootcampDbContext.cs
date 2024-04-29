@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.Identity.Client;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DataAccessLayer.DatabaseContext
@@ -17,7 +19,7 @@ namespace DataAccessLayer.DatabaseContext
 
         public BootcampDbContext(DbContextOptions<BootcampDbContext> options) : base(options)
         {
-            
+           
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

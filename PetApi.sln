@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessAccessLayer", "BusinessAccessLayer\BusinessAccessLayer.csproj", "{C08134AE-8AEC-42B4-91F4-52FAE5CCFBC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTTokenKeyGenerator", "JWTTokenKeyGenerator\JWTTokenKeyGenerator.csproj", "{B930DA81-A944-40ED-880F-50A4011498DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +29,15 @@ Global
 		{C08134AE-8AEC-42B4-91F4-52FAE5CCFBC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C08134AE-8AEC-42B4-91F4-52FAE5CCFBC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C08134AE-8AEC-42B4-91F4-52FAE5CCFBC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B930DA81-A944-40ED-880F-50A4011498DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B930DA81-A944-40ED-880F-50A4011498DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B930DA81-A944-40ED-880F-50A4011498DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B930DA81-A944-40ED-880F-50A4011498DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CA781A1-D105-4F7E-9497-5BCF1ECD321E}
 	EndGlobalSection
 EndGlobal
